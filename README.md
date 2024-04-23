@@ -1,21 +1,21 @@
 # Daily Diet API
 
-Este projeto foi desenvolvido utilizando o framework Fastify!
+This project was developed using the Fastify framework!
 
-## Introdução
+## Introduction
 
-Este projeto é uma API desenvolvida com Node.js e Fastify destinada a servir como backend para uma aplicação de gerenciamento de dietas. Esse projeto é um dos desafios da trilha de Node da [Rocketseat](https://www.rocketseat.com.br/)!
+This project is an API developed with Node.js and Fastify intended to serve as a backend for a diet management application. This project is one of the challenges from the Node track at [Rocketseat](https://www.rocketseat.com.br/)!
 
-## Pré-requisitos
+## Prerequisites
 
-Antes de iniciar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+Before starting, you will need to have the following tools installed on your machine:
 - [Node.js](https://nodejs.org/en)
 - [NPM](https://npmjs.com/)
-- [Docker](https://www.docker.com/) (Opcional)
+- [Docker](https://www.docker.com/) (Optional)
 
-## Instalação
+## Installation
 
-Clone o projeto e instale as dependências:
+Clone the project and install the dependencies:
 
 ```bash
 git clone https://github.com/rodrigoqueiroz12/daily-diet-api.git
@@ -23,9 +23,9 @@ cd daily-diet-api
 npm install
 ```
 
-Para rodar o projeto localmente:
+To run the project locally:
 
-Clone o arquivo `.env.example`, o renomeie para `.env` e configure as variáveis, especialmente a `DATABASE_URL`.
+Clone the `.env.example` file, rename it to `.env`, and configure the variables, especially the `DATABASE_URL`.
 
 ```bash
 docker compose up -d
@@ -37,13 +37,13 @@ npm start
 
 ### Endpoint: POST /users
 
-| Método | URL | Header | Body |
+| Method | URL | Header | Body |
 | ------ | --- | ------ | ---- |
 | POST | `/users` | `Content-Type: application/json` | `{ "name": "John Doe", "email": "john.doe@mail.com", "password": "password" }` |
 
-**Descrição:** Cria um novo usuário no sistema.
+**Description:** Creates a new user in the app and returns the created user's information.
 
-**CURL Exemplo:**
+**CURL Example:**
 
 ```bash
 curl --request POST \
@@ -57,7 +57,7 @@ curl --request POST \
   }'
 ```
 
-**Exemplo de Resposta:**
+**Response Example:**
 
 ```json
 {
@@ -74,13 +74,13 @@ curl --request POST \
 
 ### Endpoint: POST /authenticate
 
-| Método | URL | Header | Body |
+| Method | URL | Header | Body |
 | ------ | --- | ------ | ---- |
 | POST | `/authenticate` | `Content-Type: application/json` | `{ "email": "john.doe@mail.com", "password": "password" }` |
 
-**Descrição:** Autentica o usuário no sistema.
+**Description:** Authenticates the user to the system and returns the JWT access token.
 
-**CURL Exemplo:**
+**CURL Example:**
 
 ```bash
 curl --request POST \
@@ -93,7 +93,7 @@ curl --request POST \
   }'
 ```
 
-**Exemplo de Resposta:**
+**Response Example:**
 
 ```json
 {
@@ -103,13 +103,13 @@ curl --request POST \
 
 ### Endpoint: PATCH /token/refresh
 
-| Método | URL | Header | Body |
+| Method | URL | Header | Body |
 | ------ | --- | ------ | ---- |
 | PATCH | `/token/refresh` | `Content-Type: application/json`; `Authorization: Bearer {token}` | ---- |
 
-**Descrição:** Atualiza o token do usuário.
+**Description:** Updates the user's JWT token.
 
-**CURL Exemplo:**
+**CURL Example:**
 
 ```bash
 curl --request PATCH \
@@ -118,7 +118,7 @@ curl --request PATCH \
   --header 'User-Agent: insomnia/8.6.1'
 ```
 
-**Exemplo de Resposta:**
+**Response Example:**
 
 ```json
 {
@@ -128,13 +128,13 @@ curl --request PATCH \
 
 ### Endpoint: GET /me
 
-| Método | URL | Header | Body |
+| Method | URL | Header | Body |
 | ------ | --- | ------ | ---- |
 | GET | `/me` | `Content-Type: application/json`; `Authorization: Bearer {token}` | ---- |
 
-**Descrição:** Retorna as informações do perfil do usuário autenticado.
+**Description:** Returns the authenticated user's profile information.
 
-**CURL Exemplo:**
+**CURL Example:**
 
 ```bash
 curl --request GET \
@@ -143,7 +143,7 @@ curl --request GET \
   --header 'User-Agent: insomnia/8.6.1'
 ```
 
-**Exemplo de Resposta:**
+**Response Example:**
 
 ```json
 {
@@ -160,13 +160,13 @@ curl --request GET \
 
 ### Endpoint: GET /metrics
 
-| Método | URL | Header | Body |
+| Method | URL | Header | Body |
 | ------ | --- | ------ | ---- |
 | GET | `/metrics` | `Content-Type: application/json`; `Authorization: Bearer {token}` | ---- |
 
-**Descrição:** Pega as informações de refeições do usuário.
+**Description:** Returns the user's meal information.
 
-**CURL Exemplo:**
+**CURL Example:**
 
 ```bash
 curl --request GET \
@@ -175,7 +175,7 @@ curl --request GET \
   --header 'User-Agent: insomnia/8.6.1'
 ```
 
-**Exemplo de Resposta:**
+**Response Example:**
 
 ```json
 {
@@ -190,13 +190,13 @@ curl --request GET \
 
 ### Endpoint: GET /meals
 
-| Método | URL | Header | Body |
+| Method | URL | Header | Body |
 | ------ | --- | ------ | ---- |
 | GET | `/meals` | `Content-Type: application/json`; `Authorization: Bearer {token}` | ---- |
 
-**Descrição:** Pega as refeições do usuário.
+**Description:** Returns all of the user's meals.
 
-**CURL Exemplo:**
+**CURL Example:**
 
 ```bash
 curl --request GET \
@@ -207,13 +207,13 @@ curl --request GET \
 
 ### Endpoint: POST /meals
 
-| Método | URL | Header | Body |
+| Method | URL | Header | Body |
 | ------ | --- | ------ | ---- |
 | POST | `/meals` | `Content-Type: application/json`; `Authorization: Bearer {token}` | `{"name": "First meal", "description": "Meal description", "ateAt": "2024-04-23T21:33:22.393Z", "isInDiet": true}` |
 
-**Descrição:** Cria uma nova refeição.
+**Description:** Creates a new meal and returns the information about the created meal.
 
-**CURL Exemplo:**
+**CURL Example:**
 
 ```bash
 curl --request POST \
@@ -229,7 +229,7 @@ curl --request POST \
   }'
 ```
 
-**Exemplo de Resposta:**
+**Response Example:**
 
 ```json
 {
@@ -260,13 +260,13 @@ curl --request POST \
 
 ### Endpoint: GET /meals/:id
 
-| Método | URL | Header | Body |
+| Method | URL | Header | Body |
 | ------ | --- | ------ | ---- |
 | GET | `/meals/:id` | `Content-Type: application/json`; `Authorization: Bearer {token}` | `{"name": "First meal", "description": "Meal description", "ateAt": "2024-04-23T21:33:22.393Z", "isInDiet": true}` |
 
-**Descrição:** Pega uma refeição do usuário.
+**Description:** Returns a meal from the authenticated user.
 
-**CURL Exemplo:**
+**CURL Example:**
 
 ```bash
 curl --request GET \
@@ -292,13 +292,13 @@ curl --request GET \
 
 ### Endpoint: PUT /meals/:id
 
-| Método | URL | Header | Body |
+| Method | URL | Header | Body |
 | ------ | --- | ------ | ---- |
 | PUT | `/meals/:id` | `Content-Type: application/json`; `Authorization: Bearer {token}` | `{"name": "First meal", "description": "Meal description", "ateAt": "2024-04-23T21:33:22.393Z", "isInDiet": true}` |
 
-**Descrição:** Atualiza uma refeição do usuário.
+**Description:** Updates a user's meal.
 
-**CURL Exemplo:**
+**CURL Example:**
 
 ```bash
 curl --request PUT \
@@ -331,13 +331,13 @@ curl --request PUT \
 
 ### Endpoint: DELETE /meals/:id
 
-| Método | URL | Header | Body |
+| Method | URL | Header | Body |
 | ------ | --- | ------ | ---- |
 | DELETE | `/meals/:id` | `Content-Type: application/json`; `Authorization: Bearer {token}` | ---- |
 
-**Descrição:** Exclui uma refeição do usuário.
+**Description:** Deletes a user's meal.
 
-**CURL Exemplo:**
+**CURL Example:**
 
 ```bash
 curl --request DELETE \
@@ -361,26 +361,26 @@ curl --request DELETE \
 }
 ```
 
-## Desenvolvimento
+## Development
 
-### Estrutura de diretórios
+### Directory Structure
 
-- `prisma`: Contém o schema e as migrations do banco de dados.
-- `src`: Contém todos os arquivos da aplicação.
-  - `\@types`: Contém os arquivos de tipagem da aplicação.
-  - `\lib`: Contém arquivos com funções que podem ser úteis em mais de um lugar da aplicação.
-  - `\tests`: Contém os arquivos de testes da aplicação.
-  - `\app`: Contém os erros, controllers, middlewares, repositórios e serviços da aplicação.
+- `prisma`: Contains the schema and database migrations.
+- `src`: Contains all the application files.
+  - `\@types`: Contains the application's typing files.
+  - `\lib`: Contains files with functions that may be useful in more than one part of the application.
+  - `\tests`: Contains the application's test files.
+  - `\app`: Contains the errors, controllers, middlewares, repositories, and services of the application.
 
-### Scripts importantes
+### Important Scripts
 
-- `npm run dev`: Executa a aplicação em modo de desenvolvimento.
-- `npm run build`: Realiza o build da aplicação.
-- `npm run start`: Executa a versão de build da aplicação.
-- `npm run test`: Executa os testes unitários da aplicação.
-- `npm run test:e2e`: Executa os testes end-to-end da aplicação.
+- `npm run dev`: Runs the application in development mode.
+- `npm run build`: Builds the application.
+- `npm run start`: Runs the built version of the application.
+- `npm run test`: Executes the unit tests of the application.
+- `npm run test:e2e`: Executes the end-to-end tests of the application.
 
-## Contato
+## Contact
 
 - Rodrigo Queiroz - [LinkedIn](https://www.linkedin.com/in/rodrigo-queiroz-a113a9212)
 - rodrigo.queiroz0629@gmail.com
